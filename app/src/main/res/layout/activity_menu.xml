@@ -1,0 +1,21 @@
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:text="Ustawienia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/moj_fiolet"
+        app:cornerRadius="4dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#6200EE"
+        />
+
+
+</LinearLayout>

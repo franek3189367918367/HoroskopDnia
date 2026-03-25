@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
@@ -20,8 +21,8 @@
     <Spinner
         android:id="@+id/spinner_zodiac_sign"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_select_sign_label" />
@@ -33,57 +34,100 @@
         android:text="Odśwież horoskop"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_zodiac_sign" />
+        app:layout_constraintTop_toBottomOf="@id/spinner_zodiac_sign"
+        android:backgroundTint="@color/moj_fiolet"
+        app:cornerRadius="4dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#6200EE" />
 
-    <TextView
-        android:id="@+id/tv_horoscope_title"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Horoskop na Dziś dla: [Znak]"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Menu"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_refresh" />
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="85dp"
+        android:backgroundTint="@color/moj_fiolet"
+        app:cornerRadius="4dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#6200EE" />
 
-    <TextView
-        android:id="@+id/tv_horoscope_date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        tools:text="Data: Dec 9, 2025"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_horoscope_title" />
-
-    <ScrollView
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#CCFFFFFF"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toTopOf="@id/btn_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_horoscope_date">
+        app:layout_constraintTop_toBottomOf="@id/btn_refresh">
 
-        <TextView
-            android:id="@+id/tv_horoscope_content"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            tools:text="Tutaj pojawi się pełna treść Twojego horoskopu na dziś, pobrana z API..." />
-    </ScrollView>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_horoscope_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Horoskop na Dziś dla: [Znak]"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_horoscope_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#444444"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                tools:text="Data: Dec 9, 2025" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_horoscope_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    tools:text="Tutaj pojawi się pełna treść Twojego horoskopu..." />
+            </ScrollView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Zobacz szczegóły (W trakcie)"
+        android:text="Zobacz szczegóły"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
